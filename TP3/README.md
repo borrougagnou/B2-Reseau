@@ -1,3 +1,116 @@
+# Mise en place du lab
+
+Schema:
+
+![image](https://user-images.githubusercontent.com/10796546/55687528-1da2e480-596e-11e9-925e-6d2c680a21c6.png)
+
+comme on peut le voir, tout ce ping bien:
+
+![image](https://user-images.githubusercontent.com/10796546/55687365-7ec9b880-596c-11e9-8e46-c6115f7d018d.png)
+
+# Configuration des VLANs
+## Configuration du trunk
+Sur **IOU1**, on commence déjà a configurer le hostname puis le port **eth0/0** en mode **TRUNK**
+```
+IOU1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+IOU1(config)#hostn SW1
+SW1(config)#
+```
+```
+SW1(config)# int Eth 0/0
+SW1(config-if)# switchport trunk encapsulation dot1q
+SW1(config-if)# switchport mode trunk
+```
+sur **IOU2** on fait fait exactement pareil, sauf qu'il faut changer le hostname en **SW2**
+
+## Configuration access
+Sur SW1, on ajoute l'accès **VLAN 10** au port **eth1/1** et on fait la même chose sur **SW2** avec le port **1/0**:
+```
+SW1(config)# vlan 10
+SW1(config-vlan)# name vlan_10
+SW1(config-vlan)# exit
+SW1(config)# int Eth1/1
+SW1(config-if)# sw mode acc
+SW1(config-if)# sw acc vlan 10
+```
+
+Ensuite on refait la même manipulation pour le **Client2** à la différence on mettra `vlan 20` et `int Eth2/0`
+
+On teste, et on vois que Client1 peut ping Client3 mais pas Client2
+
+![image](https://user-images.githubusercontent.com/10796546/55688123-79bd3700-5975-11e9-892c-834e0f5f00c0.png)
+
+En traceroute -I on obtient cela:
+
+![image](https://user-images.githubusercontent.com/10796546/55688282-1c29ea00-5977-11e9-8679-799e06ac1768.png)
+
+d'ailleur traceroute -I permet d'envoyer des packet ICMP et non UDP
+il envoie une "demande d'écho ICMP" avec modification de la valeur TTL et attend que la requette ICMP soit dépassée.
+il peut-être utilisé lorsque les packets UDP soient bloqués
+
+# Manipulation simple de routeurs
+Schema:
+![image](https://user-images.githubusercontent.com/10796546/55695271-2b7d5780-59b8-11e9-8074-3842c28870e1.png)
+
+Le seul PC qui ne pourra pas communiquer sera **client1** puisqu'il n'a pas de passerelle
+
+Ensuite, pour faire communiquer les 2 réseaux, il suffit d'ajouter les IPs au port ethernet, puis les routes comme ceci:
+```
+R2#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)#hostn router1
+router1(config)#
+router1(config)#int Fa0/0
+router1(config-if)#ip add 10.2.12.1 255.255.255.252
+router1(config-if)#no sh
+router1(config-if)#
+*Mar  1 00:03:58.715: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Mar  1 00:03:59.715: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+router1(config-if)#exit
+router1(config)#int Fa3/0
+router1(config-if)#ip add 10.1.2.254 255.255.255.0
+router1(config-if)#no sh
+router1(config-if)#
+*Mar  1 00:04:32.331: %LINK-3-UPDOWN: Interface FastEthernet3/0, changed state to up
+*Mar  1 00:04:33.331: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet3/0, changed state to up
+router1(config-if)#exit
+router1(config)#ip route 10.2.2.0 255.255.255.0 10.2.12.2
+router1(config)#
+
+```
+
+on fait la même chose sur le router 2 sauf qu'on lui ajoute 2 autres IP fa2/0:`10.2.2.254` et fa0/0:`10.2.12.2`
+puis une route pointant vers le routeur 1: `ip route 10.1.2.0 255.255.255.0 10.2.12.1`
+
+sur les machines ont fait pareil, sauf qu'on ajoute une route default vers le routeur auquel on est relié, ici sur **SERVER1**:
+```
+# sudo ip route add default via 10.2.2.254 ens33
+```
+
+un petit ping, et ***PAF !!!*** *ça fait des chocapics !* :
+![image](https://user-images.githubusercontent.com/10796546/55696781-d264f200-59be-11e9-9e41-dfee41a7ca83.png)
+
+SERVER1 ping bien le client mais pas le réseaux entre les 2 routeurs
+
+
+### Petit info supplémentaire:
+les ports du routeur sont des port **Fast Ethernet**, cela veux dire qu'ils peuvent aller jusqu'à 100 Mbits comparé au port **Ethernet** qui eux vont à 10 Mbits. Sur le marché actuel, on trouve également du **Gigabit Ethernet** (1Gbits) et du **10 Gigabit Ethernet** qui peux monter jusqu'à 10 Gbits !!!
+
+Et sur un Routeur ou Switch, cela change tout !
+un port Ethernet de base, sera représenté par **Ethernet** ou **e** en abrégé
+un port Fast Ethernet sera représenté par **FastEthernet** ou **fa** en abrégé
+un port Gigabit Ethetnet sera représenté par **GigabitEthernet** ou **ga** en abrégé
+un port 10 Gigabit Ethernet sera représenté par **tengigabitethernet** mais je ne connais pas son abrégé.
+
+Ensuite pour finir cet étape, si je voulais que tout communique, il aurait fallut que je mette un switch relier au routeur, qui prend Client1 et Client2:
+
+![image](https://user-images.githubusercontent.com/10796546/55697537-173e5800-59c2-11e9-9528-ceb979a64f47.png)
+
+
+# Mise en place d'OSPF
+[EN COURS]
+
 # LabFinal
 
 ![image](https://user-images.githubusercontent.com/10796546/55314285-1e1d1600-546a-11e9-94ae-c8b39d652052.png)
