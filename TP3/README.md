@@ -98,18 +98,83 @@ SERVER1 ping bien le client mais pas le réseaux entre les 2 routeurs
 les ports du routeur sont des port **Fast Ethernet**, cela veux dire qu'ils peuvent aller jusqu'à 100 Mbits comparé au port **Ethernet** qui eux vont à 10 Mbits. Sur le marché actuel, on trouve également du **Gigabit Ethernet** (1Gbits) et du **10 Gigabit Ethernet** qui peux monter jusqu'à 10 Gbits !!!
 
 Et sur un Routeur ou Switch, cela change tout !
+
 un port Ethernet de base, sera représenté par **Ethernet** ou **e** en abrégé
+
 un port Fast Ethernet sera représenté par **FastEthernet** ou **fa** en abrégé
+
 un port Gigabit Ethetnet sera représenté par **GigabitEthernet** ou **ga** en abrégé
+
 un port 10 Gigabit Ethernet sera représenté par **tengigabitethernet** mais je ne connais pas son abrégé.
 
-Ensuite pour finir cet étape, si je voulais que tout communique, il aurait fallut que je mette un switch relier au routeur, qui prend Client1 et Client2:
+Ensuite pour finir cet étape, si je voulais que tout communique, il aurait fallut que je mette un switch relier au routeur, qui prend Client1 et Client2 comme cela:
 
 ![image](https://user-images.githubusercontent.com/10796546/55697537-173e5800-59c2-11e9-9528-ceb979a64f47.png)
 
 
 # Mise en place d'OSPF
-[EN COURS]
+Schéma:
+
+![image](https://user-images.githubusercontent.com/10796546/55698456-32ab6200-59c6-11e9-9f71-92d7429014c8.png)
+
+On commence par ajouter chaque IP à chaque interface de chaque routeur seul l'interface fa3/0 est utilisé sur **R1** et **R4**:
+```
+R1#
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#int fa3/0
+R1(config-if)#ip add 10.3.102.254 255.255.255.0
+R1(config-if)#no sh
+R1(config-if)#
+*Mar  1 00:01:59.135: %LINK-3-UPDOWN: Interface FastEthernet3/0, changed state to up
+*Mar  1 00:02:00.135: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet3/0, changed state to up
+R1(config-if)#exit
+R1(config)#int fa0/0
+R1(config-if)#ip add 10.3.100.1 255.255.255.252
+R1(config-if)#no sh
+R1(config-if)#
+*Mar  1 00:03:09.483: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Mar  1 00:03:10.483: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+R1(config-if)#exit
+R1(config)#int fa1/0
+R1(config-if)#ip add 10.3.100.2 255.255.255.252
+% 10.3.100.0 overlaps with FastEthernet0/0
+R1(config-if)#ip add 10.3.100.22 255.255.255.252
+R1(config-if)#no sh
+R1(config-if)#exit
+R1(config)#
+*Mar  1 00:04:26.691: %LINK-3-UPDOWN: Interface FastEthernet1/0, changed state to up
+*Mar  1 00:04:27.691: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to up
+R1(config)#
+```
+On ajoute un `router-id <router>` et on relie chaque `network 10.3.100.8 0.0.0.3 area 0` au port que le routeur en question possède, comme on peut le voir, le router as pu détecter les autres routeurs qui sont relier à eux:
+
+![image](https://user-images.githubusercontent.com/10796546/55699405-0f36e600-59cb-11e9-9dc5-c41e841f77b1.png)
+
+une fois cela fait, on sauvegarde !!!
+```
+R1#copy running-config startup-config
+Destination filename [startup-config]?
+Building configuration...
+[OK]
+R1#
+```
+
+on fait un petit test ping pong directement avec router1 sur router4 (quoi de mieux que les 2 réseaux les plus éloigés pour faire des tests):
+
+![image](https://user-images.githubusercontent.com/10796546/55713230-83d04b80-59f0-11e9-982e-c7ab1f65c3ae.png)
+
+on vérifie également qu'ils sont ajouté:
+```
+R2#show ip ospf neigh
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+3.3.3.3           1   FULL/DR         00:00:35    10.3.100.6      FastEthernet0/0
+1.1.1.1           1   FULL/BDR        00:00:35    10.3.100.1      FastEthernet1/0
+
+```
+
+And voila !
 
 # LabFinal
 
