@@ -1,17 +1,17 @@
 # TP 4 Réseaux
 
-- # Menu: Infra Campus
-1. Description
-2. Documents
-	- Détails des utilisateurs / équipements
-	- Schéma de la Topologie
-	- Plan d'adressage IP
-	- Plan des VLANS
-	- Matériels nécessaires
-3. Maquette GNS3 (à faire)
+## Menu: Infra Campus
+1. [Description](#description)
+2. [Documents](#documents)
+	- [Détails des utilisateur et équipements](#détails-des-utilisateur-et-équipements)
+	- [Schéma de la topologie](#schéma-de-la-topologie)
+	- [Plan d'adressage IP](#plan-dadressage-ip)
+	- [Plan des VLAN](#plan-des-vlan)
+	- [Matériels nécessaires](#matériels-nécessaires)
+3. [Maquette GNS3](#maquette-gns3)
 
-# Description:
-Mise en Place dune infrastructure réseaux à l'échelle d'un campus étudiants:
+## Description:
+Mise en Place d'une infrastructure réseaux à l'échelle d'un campus étudiants:
 #### Locaux
 
 -   3 bâtiments
@@ -32,13 +32,22 @@ Mise en Place dune infrastructure réseaux à l'échelle d'un campus étudiants:
 -   15 caméras
 -   2 admins
 
-# Documents:
+## Documents:
 
-Détails des utilisateur et équipements:
-	https://auvencecom-my.sharepoint.com/:x:/r/personal/boris_rougagnou_ynov_com/_layouts/15/Doc.aspx?sourcedoc=%7B41b06252-8aee-4f3f-867b-80b5f4e9f007%7D&action=default&cid=03e90a8d-3f2f-4c64-8c1c-89a7ca6381b5
+### [EN COURS] Détails des utilisateur et équipements
+![Excel logo](https://icon-icons.com/icons2/1156/PNG/32/1486565571-microsoft-office-excel_81549.png "Excel logo")[Excel Online](https://auvencecom-my.sharepoint.com/:x:/g/personal/boris_rougagnou_ynov_com/EVJisEHuij9PhnuAtfTp8AcBm2xnpknZKRhpwgXTqD71Pw?e=NpB8fq)
 
-Schéma de la topologie:
-https://auvencecom-my.sharepoint.com/:u:/r/personal/boris_rougagnou_ynov_com/_layouts/15/Doc.aspx?sourcedoc=%7B20E13029-8B0A-4B72-B457-3A5B82B98103%7D&file=TP4-2.vsdx&action=default
+### [EN COURS] Schéma de la topologie
+![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:x:/g/personal/boris_rougagnou_ynov_com/EVJisEHuij9PhnuAtfTp8AcBm2xnpknZKRhpwgXTqD71Pw?e=NpB8fq)
+
+### [EN COURS] Plan d'adressage IP
+![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:u:/g/personal/boris_rougagnou_ynov_com/EQLM_L9bcMZBvBKLz-xysqQBHS7EeT_E4G46CW6BuZLDrA?e=IhFPns)
+
+### [EN COURS] Plan des VLAN
+![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:u:/g/personal/boris_rougagnou_ynov_com/ESpNieUurVhDuXon-_Eq7KoBGbIqMOrDiZ1-qMulP6Pf4A?e=lr1Pjt)
+
+### [EN COURS] Matériels nécessaires
 
 
-
+## [EN COURS] Maquette GNS3
+![image](https://user-images.githubusercontent.com/10796546/56856882-d607eb00-6964-11e9-9a84-3305f5a1db9d.png)
