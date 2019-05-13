@@ -9,17 +9,16 @@
 	- [Plan des VLAN](#plan-des-vlan)
 	- [Matériels nécessaires](#matériels-nécessaires)
 3. [Maquette GNS3](#maquette-gns3)
+4. [Information Supplémentaires](#information-supplémentaires)
 
 ## Description:
 Mise en Place d'une infrastructure réseaux à l'échelle d'un campus étudiants:
 #### Locaux
-
 -   3 bâtiments
     -   2 étages, 5 salles/étages
     -   minimum 30 clients par salle
 
 ####  Clients du réseau
-
 -   ~200 étudiants
     -   en moyenne, ils ont 1,5 équipements
         -   tous ont un PC
@@ -34,20 +33,26 @@ Mise en Place d'une infrastructure réseaux à l'échelle d'un campus étudiants
 
 ## Documents:
 
-### [EN COURS] Détails des utilisateur et équipements
+### Détails des utilisateur et équipements
 ![Excel logo](https://icon-icons.com/icons2/1156/PNG/32/1486565571-microsoft-office-excel_81549.png "Excel logo")[Excel Online](https://auvencecom-my.sharepoint.com/:x:/g/personal/boris_rougagnou_ynov_com/EVJisEHuij9PhnuAtfTp8AcBm2xnpknZKRhpwgXTqD71Pw?e=NpB8fq)
 
-### [EN COURS] Schéma de la topologie
+### Schéma de la topologie
 ![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:x:/g/personal/boris_rougagnou_ynov_com/EVJisEHuij9PhnuAtfTp8AcBm2xnpknZKRhpwgXTqD71Pw?e=NpB8fq)
 
-### [EN COURS] Plan d'adressage IP
+### Plan d'adressage IP
 ![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:u:/g/personal/boris_rougagnou_ynov_com/EQLM_L9bcMZBvBKLz-xysqQBHS7EeT_E4G46CW6BuZLDrA?e=IhFPns)
 
-### [EN COURS] Plan des VLAN
+### Plan des VLAN
+
 ![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:u:/g/personal/boris_rougagnou_ynov_com/ESpNieUurVhDuXon-_Eq7KoBGbIqMOrDiZ1-qMulP6Pf4A?e=lr1Pjt)
 
-### [EN COURS] Matériels nécessaires
+### Matériels supplémentaires:
+16 Switchs
+1 ou 4 Routeur(s)
 
-
-## [EN COURS] Maquette GNS3
+## Maquette GNS3
 ![image](https://user-images.githubusercontent.com/10796546/56856882-d607eb00-6964-11e9-9a84-3305f5a1db9d.png)
+
+## Information Supplémentaires
+Le réseaux caméra est un réseaux totalement déconnecté
+Petite hésitation entre le plan Visio, et le plan GNS3 concernant les routeurs, faire de la Haute Disponibilité ou non
