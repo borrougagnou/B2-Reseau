@@ -7,7 +7,7 @@
 	- [Schéma de la topologie](#schéma-de-la-topologie)
 	- [Plan d'adressage IP](#plan-dadressage-ip)
 	- [Plan des VLAN](#plan-des-vlan)
-	- [Matériels nécessaires](#matériels-nécessaires)
+	- [Matériels supplémentaires](#matériels-supplémentaires)
 3. [Maquette GNS3](#maquette-gns3)
 4. [Information Supplémentaires](#information-supplémentaires)
 
@@ -34,25 +34,29 @@ Mise en Place d'une infrastructure réseaux à l'échelle d'un campus étudiants
 ## Documents:
 
 ### Détails des utilisateur et équipements
-![Excel logo](https://icon-icons.com/icons2/1156/PNG/32/1486565571-microsoft-office-excel_81549.png "Excel logo")[Excel Online](https://auvencecom-my.sharepoint.com/:x:/g/personal/boris_rougagnou_ynov_com/EVJisEHuij9PhnuAtfTp8AcBm2xnpknZKRhpwgXTqD71Pw?e=NpB8fq)
+![image](https://raw.githubusercontent.com/borrougagnou/B2-Reseau/master/TP4/plan/plan_adressage.PNG)
+Source: ![Excel logo](https://icon-icons.com/icons2/1156/PNG/32/1486565571-microsoft-office-excel_81549.png "Excel logo")[Excel Online](https://auvencecom-my.sharepoint.com/:x:/g/personal/boris_rougagnou_ynov_com/EVJisEHuij9PhnuAtfTp8AcBm2xnpknZKRhpwgXTqD71Pw?e=NpB8fq)
 
 ### Schéma de la topologie
-![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:x:/g/personal/boris_rougagnou_ynov_com/EVJisEHuij9PhnuAtfTp8AcBm2xnpknZKRhpwgXTqD71Pw?e=NpB8fq)
+PDF: https://github.com/borrougagnou/B2-Reseau/blob/master/TP4/plan/TP4-2-batiment.pdf
+
+Source: ![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:x:/g/personal/boris_rougagnou_ynov_com/EVJisEHuij9PhnuAtfTp8AcBm2xnpknZKRhpwgXTqD71Pw?e=NpB8fq)
 
 ### Plan d'adressage IP
-![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:u:/g/personal/boris_rougagnou_ynov_com/EQLM_L9bcMZBvBKLz-xysqQBHS7EeT_E4G46CW6BuZLDrA?e=IhFPns)
+PDF: https://github.com/borrougagnou/B2-Reseau/blob/master/TP4/plan/TP4-2-ip.pdf
+
+Source: ![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:u:/g/personal/boris_rougagnou_ynov_com/EQLM_L9bcMZBvBKLz-xysqQBHS7EeT_E4G46CW6BuZLDrA?e=IhFPns)
 
 ### Plan des VLAN
-
-![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:u:/g/personal/boris_rougagnou_ynov_com/ESpNieUurVhDuXon-_Eq7KoBGbIqMOrDiZ1-qMulP6Pf4A?e=lr1Pjt)
+Source: ![Visio logo](https://icon-icons.com/icons2/1156/PNG/32/1486565580-microsoft-office-ms-visio_81554.png "Visio logo")[Visio Online](https://auvencecom-my.sharepoint.com/:u:/g/personal/boris_rougagnou_ynov_com/ESpNieUurVhDuXon-_Eq7KoBGbIqMOrDiZ1-qMulP6Pf4A?e=lr1Pjt)
 
 ### Matériels supplémentaires:
-16 Switchs
-1 ou 4 Routeur(s)
+- 16 Switchs
+- 1 ou 4 Routeur(s)
 
 ## Maquette GNS3
-![image](https://user-images.githubusercontent.com/10796546/56856882-d607eb00-6964-11e9-9a84-3305f5a1db9d.png)
+![image](https://raw.githubusercontent.com/borrougagnou/B2-Reseau/master/TP4/gns3_plan/plan.png)
 
 ## Information Supplémentaires
-Le réseaux caméra est un réseaux totalement déconnecté
-Petite hésitation entre le plan Visio, et le plan GNS3 concernant les routeurs, faire de la Haute Disponibilité ou non
+- Le réseaux caméra est un réseaux totalement déconnecté
+- Petite hésitation entre le plan Visio, et le plan GNS3 concernant les routeurs, faire de la Haute Disponibilité ou non
